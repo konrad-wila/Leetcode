@@ -3,20 +3,16 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        k = k % len (nums)
-        l, r = 0, len(nums) - 1
-        while l < r:
-            nums[l], nums[r] = nums[r], nums[l]
-            l, r = l + 1, r - 1
+        n = len(nums)
+        k %= n
 
-        l, r = 0, k - 1
-        while l < r:
-            nums[l], nums[r] = nums[r], nums[l]
-            l, r = l + 1, r - 1
+        def reverse(start, end):
+            while start < end:
+                nums[start], nums[end] = nums[end], nums[start]
+                start, end = start + 1, end - 1
 
-        l, r = k, len(nums) - 1
-        while l < r:
-            nums[l], nums[r] = nums[r], nums[l]
-            l, r = l + 1, r - 1
+        nums.reverse()
+        reverse(0, k - 1)
+        reverse(k, n - 1)
          
         
